@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AutoADB</string>
+    <string name="enable_adbd">启用ADB服务</string>
+    <string name="restart_adbd">立即重启ADB服务</string>
+</resources>

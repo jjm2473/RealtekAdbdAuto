@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AutoADB</string>
+    <string name="enable_adbd">Enable adbd</string>
+    <string name="restart_adbd">Restart adbd now</string>
+</resources>

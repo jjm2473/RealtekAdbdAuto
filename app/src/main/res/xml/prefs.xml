@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:app="http://schemas.android.com/apk/res-auto"
+                  android:summary="This is a dummy activity only to show case how to build a settings in an application. Changing configurations in this example doesn't affect anything."
+                  android:title="AutoADB">
+
+    <SwitchPreference
+        android:defaultValue="false"
+        android:key="enable_adbd"
+        android:title="@string/enable_adbd" />
+</PreferenceScreen>
