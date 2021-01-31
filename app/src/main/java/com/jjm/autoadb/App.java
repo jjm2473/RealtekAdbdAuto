@@ -14,16 +14,20 @@ public class App extends Application {
     }
 
     @SuppressLint({"PrivateApi", "DiscouragedPrivateApi"})
+    public void startStopAdbd(boolean start) {
+        try {
+            Class.forName("android.os.SystemProperties")
+                    .getDeclaredMethod("set", String.class, String.class)
+                    .invoke(null, start ? "ctl.start" : "ctl.stop",
+                            "adbd");
+        } catch (Exception e) {
+            Log.d("Reflect", "SystemProperties.set(\"ctl.start/ctl.stop\", \"adbd\") failed!", e);
+        }
+    }
+
     public void startAdbd() {
         ContentResolver contentResolver = getContentResolver();
-        if (Settings.Global.getInt(contentResolver, Settings.Global.ADB_ENABLED, 0) > 0) {
-            try {
-                Class.forName("android.os.SystemProperties")
-                        .getDeclaredMethod("set", String.class, String.class)
-                        .invoke(null, "ctl.start", "adbd");
-            } catch (Exception e) {
-                Log.d("Reflect", "SystemProperties.set(\"ctl.start\", \"adbd\") failed!", e);
-            }
-        }
+        if (Settings.Global.getInt(contentResolver, Settings.Global.ADB_ENABLED, 0) > 0)
+            startStopAdbd(true);
     }
 }

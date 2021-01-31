@@ -68,10 +68,8 @@ public class SettingsFragment extends LeanbackSettingsFragment {
         @Override
         public void putBoolean(String key, boolean value) {
            if (ADBD_KEY.equals(key)) {
-               Settings.Global.putInt(contentResolver, Settings.Global.ADB_ENABLED, value?1:0);
-               if (value) {
-                   app.startAdbd();
-               }
+               Settings.Global.putInt(contentResolver, Settings.Global.ADB_ENABLED, value ? 1 : 0);
+               app.startStopAdbd(value);
            } else {
                throw new UnsupportedOperationException("Unknown key " + key);
            }
